@@ -38,10 +38,45 @@ Durante a instalação, ele irá perguntar se nós queremos configurar o menu la
 
 Ele irá fazer a configuração inicial dos componentes da biblioteca PO-UI. 
 
+Tanbém já recomendo você baixar o tema do PO-UI, fornecido pela TOTVS:
+```npm i @totvs/po-theme```
+
 Para subir o projeto no ar, execute o seguinte comando:
 ``` ng serve ```
 
 E voilá, no terminal onde foi excecutado o comando acima irá aparecer a URL e a porta onde o projeto está hospedado.
 
 Acesse e veja, sua criação tomou vida (não é complexa, muito menos bonita, mas é o primeiro passo!).
+
+Para você dar sequência, você precisa incluir o módulo do PoUi nos componentes da sua aplicação Angular.
+No caso do meu projeto, eu precisei editar o app.components.ts. 
+
+Importando o seguinte componente:
+```import { PoModule } from '@po-ui/ng-components';```
+
+E adicionando na lista de componentes:
+```
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    PoToolbarModule,
+    PoMenuModule,
+    PoPageModule,
+    PoModule
+  ],
+...
+```
+
+Se você instalou o po-theme, da TOTVS, você deve ir no arquivo angular.json, e procurar pelo item "styles" no json, ao localizar, adicione os seguintes itens:
+```
+"styles": [
+  "node_modules/@totvs/po-theme/css/po-theme-default-variables.min.css",
+  "node_modules/@totvs/po-theme/css/po-theme-default.min.css",
+  "node_modules/@po-ui/style/css/po-theme-core.min.css",
+]
+```
+
 
